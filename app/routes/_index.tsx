@@ -16,12 +16,15 @@ export default function Page() {
   const { posts } = useLoaderData<typeof loader>()
 
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.slug}>
-          <Link to={`/posts/${post.slug}`}>{post.entry.title}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h1>Remix + Keystatic</h1>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.slug}>
+            <Link to={`/posts/${post.slug}`}>{post.entry.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }
