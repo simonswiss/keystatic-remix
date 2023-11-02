@@ -1,30 +1,27 @@
-import type { MetaFunction } from '@remix-run/node'
+import { json } from '@remix-run/node'
+import { Link, useLoaderData } from '@remix-run/react'
+import { createReader } from '@keystatic/core/reader'
 
-export const meta: MetaFunction = () => {
-  return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }]
+import keystaticConfig from '../../keystatic.config'
+
+export async function loader() {
+  // 1. Create a reader
+  const reader = createReader(process.cwd(), keystaticConfig)
+  // 2. Read the "Posts" collection
+  const posts = await reader.collections.posts.all()
+  return json({ posts })
 }
 
-export default function Index() {
+export default function Page() {
+  const { posts } = useLoaderData<typeof loader>()
+
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
-      <h1>Welcome to Remix and Keystatic</h1>
-      <ul>
-        <li>
-          <a target="_blank" href="https://remix.run/tutorials/blog" rel="noreferrer">
-            15m Quickstart Blog Tutorial
-          </a>
+    <ul>
+      {posts.map((post) => (
+        <li key={post.slug}>
+          <Link to={`/posts/${post.slug}`}>{post.entry.title}</Link>
         </li>
-        <li>
-          <a target="_blank" href="https://remix.run/tutorials/jokes" rel="noreferrer">
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+      ))}
+    </ul>
   )
 }
