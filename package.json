@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@keystatic/core": "^0.1.8",
-    "@keystatic/remix": "^1.0.0",
+    "@keystatic/remix": "^1.0.1",
     "@remix-run/css-bundle": "^2.2.0",
     "@remix-run/node": "^2.2.0",
     "@remix-run/react": "^2.2.0",

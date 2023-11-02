@@ -6,9 +6,8 @@ import { useLoaderData } from '@remix-run/react'
 
 import keystaticConfig from '../../keystatic.config'
 
-const reader = createReader(process.cwd(), keystaticConfig)
-
 export async function loader({ params }: LoaderFunctionArgs) {
+  const reader = createReader(process.cwd(), keystaticConfig)
   const slug = params.slug
   if (!slug) throw json('Not Found', { status: 404 })
   const post = await reader.collections.posts.read(slug, { resolveLinkedFiles: true })

@@ -4,11 +4,10 @@ import { createReader } from '@keystatic/core/reader'
 
 import keystaticConfig from '../../keystatic.config'
 
-// 1. Create a reader
-const reader = createReader(process.cwd(), keystaticConfig)
-
-// 2. Read the "Posts" collection
 export async function loader() {
+  // 1. Create a reader
+  const reader = createReader(process.cwd(), keystaticConfig)
+  // 2. Read the "Posts" collection
   const posts = await reader.collections.posts.all()
   return json({ posts })
 }
