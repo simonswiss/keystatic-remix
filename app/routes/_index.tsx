@@ -25,6 +25,9 @@ export default function Page() {
           </li>
         ))}
       </ul>
+      <p>
+        Visit the <Link to="/keystatic">Keystatic Admin UI</Link>.
+      </p>
     </>
   )
 }
