@@ -8,7 +8,7 @@
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
-    "postbuild": "cp -r app/content .vercel/output/content"
+    "prebuild": "cp -r app/content .vercel/output/content"
   },
   "dependencies": {
     "@keystatic/core": "^0.1.8",
