@@ -7,8 +7,7 @@
     "build": "remix build",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
-    "typecheck": "tsc",
-    "postbuild": "cp -r app/content .vercel/output/content"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@keystatic/core": "^0.1.8",
@@ -17,6 +16,7 @@
     "@remix-run/node": "^2.2.0",
     "@remix-run/react": "^2.2.0",
     "@remix-run/serve": "^2.2.0",
+    "@vercel/remix": "^2.2.0",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
