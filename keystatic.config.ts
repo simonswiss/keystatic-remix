@@ -1,6 +1,8 @@
 // keystatic.config.ts
 import { config, fields, collection } from '@keystatic/core'
 
+const contentPrefix = process.env.NODE_ENV === 'production' ? 'public/' : ''
+
 export default config({
   storage: {
     kind: 'local',
@@ -9,7 +11,7 @@ export default config({
     posts: collection({
       label: 'Posts',
       slugField: 'title',
-      path: 'public/content/posts/*',
+      path: `${contentPrefix}content/posts/*`,
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
